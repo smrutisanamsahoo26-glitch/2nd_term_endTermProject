@@ -102,7 +102,8 @@ function setGoal(){
     let g=Number(goalAmount.value)
     let m=Number(monthlySave.value)
 
-    if (g<=0 || m<=0) return ;
+    if (g<=0 || m<=0) return alert("please give a valid number");
+;
 
     goalProgress.innerText =`Goal ₹${g} → ${Math.ceil(g / m)} months required`;;
 }
