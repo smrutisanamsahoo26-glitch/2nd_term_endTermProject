@@ -108,20 +108,23 @@ function setGoal(){
 }
 
 function addSubscription(){
-    subscriptions.push({
-        name: subName.value,
-        amount: Number(subAmount.value)
-    })
+    if(Number(subAmount.value)<=0){
+        return alert("please give a valid number");
+    }else{
+        subscriptions.push({
+            name: subName.value,
+            amount: Number(subAmount.value)
+        })
+        subsList.innerHTML = "";
+        let total = 0;
 
-    subsList.innerHTML = "";
-    let total = 0;
+        subscriptions.forEach(s => {
+            total += s.amount;
+            subsList.innerHTML += `<li>${s.name} ₹${s.amount}</li>`;
+        });
 
-    subscriptions.forEach(s => {
-        total += s.amount;
-        subsList.innerHTML += `<li>${s.name} ₹${s.amount}</li>`;
-    });
-
-    subsList.innerHTML += `<li><b>Total Monthly: ₹${total}</b></li>`;
+        subsList.innerHTML += `<li><b>Total Monthly: ₹${total}</b></li>`;
+    }
 }
 
 updateUI()
